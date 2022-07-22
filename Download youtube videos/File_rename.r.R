@@ -1,4 +1,6 @@
-files = list.files()
+details = file.info(list.files(pattern="*.mp4"))
+details = details[with(details, order(as.POSIXct(mtime))), ]
+files = rownames(details)
 
 
 for (id in 1:length(files)) {
@@ -12,5 +14,7 @@ for (id in 1:length(files)) {
   print(new_name)
   
 }
+
+
 
 
